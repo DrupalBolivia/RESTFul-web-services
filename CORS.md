@@ -1,5 +1,5 @@
 Cuando se lee un REST de otro servidor
- se deberá añadir lo siguiente en el apache2.conf
+ se deberá añadir lo siguiente en el apache2.conf o instalar https://www.drupal.org/project/cors
 
 # Always set these headers.
 Header always set Access-Control-Allow-Origin "*" Header always set 
