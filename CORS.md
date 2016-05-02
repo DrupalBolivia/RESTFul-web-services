@@ -1,6 +1,7 @@
 Cuando se lee un REST de otro servidor
  se deberá añadir lo siguiente en el apache2.conf o instalar https://www.drupal.org/project/cors
 
+```
 # Always set these headers.
 Header always set Access-Control-Allow-Origin "*" Header always set 
 Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT" Header 
@@ -11,3 +12,4 @@ authorization, accept, client-security-token"
  # request.
 RewriteEngine On RewriteCond %{REQUEST_METHOD} OPTIONS
 RewriteRule ^(.*)$ $1 [R=200,L]
+```
