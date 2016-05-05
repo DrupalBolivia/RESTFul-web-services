@@ -1,0 +1,5 @@
+name: rest_example
+type: module
+description: REST example module
+core: 8.x
+package: Custom

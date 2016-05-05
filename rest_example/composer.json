@@ -1,0 +1,14 @@
+{
+  "name": "drupal/rest_example",
+  "type": "drupal-module",
+  "description": "REST example module",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/rest_example",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/rest_example",
+    "source": "http://cgit.drupalcode.org/rest_example"
+  },
+  "require": { }
+}
