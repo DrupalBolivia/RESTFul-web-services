@@ -16,8 +16,10 @@ use Drupal\user\Entity\User;
  * @RestResource(
  *   id = "rest_example_resource",
  *   label = @Translation("Rest example resource"),
+ *   serialization_class = "Drupal\node\Entity\User",
  *   uri_paths = {
- *     "canonical" = "/rest-example-resource"
+ *     "canonical" = "/rest-example-resource/{search}",
+ *     "https://www.drupal.org/link-relations/create" = "/rest-example-resource"
  *   }
  * )
  */
@@ -80,20 +82,40 @@ class RestExampleResource extends ResourceBase {
    * @throws \Symfony\Component\HttpKernel\Exception\HttpException
    *   Throws exception expected.
    */
-  public function get() {
+  public function get($search) {
 
     // You must to implement the logic of your REST Resource here.
     // Use current user after pass authentication to validate access.
     if (!$this->currentUser->hasPermission('access content')) {
       throw new AccessDeniedHttpException();
     }
-    $idsUsers = \Drupal::entityQuery('user')->execute();
+    $idsUsers = \Drupal::entityQuery('user')
+      ->condition('name', $search, 'CONTAINS')
+      ->execute();
     $users = User::loadMultiple($idsUsers);
-    /*foreach ($entries as $entrie) {
-      ... hacer algo con las entidades ...
-    }*/
 
     return new ResourceResponse($users);
   }
 
+  /**
+   * Responds to POST requests.
+   *
+   * Returns a list of bundles for specified entity.
+   *
+   * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+   *   Throws exception expected.
+   */
+  public function post($data) {
+
+    // You must to implement the logic of your REST Resource here.
+    // Use current user after pass authentication to validate access.
+    if (!$this->currentUser->hasPermission('access content')) {
+      throw new AccessDeniedHttpException();
+    }
+
+    //dd($data); //to debug input
+
+
+    return new ResourceResponse($data);
+  }
 }
