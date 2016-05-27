@@ -16,7 +16,7 @@ use Drupal\user\Entity\User;
  * @RestResource(
  *   id = "rest_example_resource",
  *   label = @Translation("Rest example resource"),
- *   serialization_class = "Drupal\node\Entity\User",
+ *   serialization_class = "Drupal\user\Entity\User",
  *   uri_paths = {
  *     "canonical" = "/rest-example-resource/{search}",
  *     "https://www.drupal.org/link-relations/create" = "/rest-example-resource"
@@ -114,7 +114,6 @@ class RestExampleResource extends ResourceBase {
     }
 
     //dd($data); //to debug input
-
 
     return new ResourceResponse($data);
   }
